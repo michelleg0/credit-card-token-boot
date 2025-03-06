@@ -18,6 +18,12 @@ public class CreditCardService {
     }
 
     public CreditCard getCreditCardById(int id) {
-        return null;
+        return creditCardRepository.findById(id);
+    }
+
+
+
+    public void deleteCreditCard(int id) {
+        creditCardRepository.delete(id);
     }
 }
