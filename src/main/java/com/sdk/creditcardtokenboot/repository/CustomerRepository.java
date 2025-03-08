@@ -2,6 +2,7 @@ package com.sdk.creditcardtokenboot.repository;
 
 import com.sdk.creditcardtokenboot.entity.Customer;
 import com.sdk.creditcardtokenboot.rowmapper.CustomerRowMapper;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
@@ -37,5 +38,23 @@ public class CustomerRepository {
 
     public int delete(int id) {
         return jdbcTemplate.update("DELETE FROM customer WHERE id = ?", id);
+    }
+
+    public Integer getCustomerId(int customerId) {
+        String sql = "SELECT id FROM customer WHERE id = ?";
+        try {
+            return jdbcTemplate.queryForObject(sql, Integer.class, customerId);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }
+
+    public String getCustomerEmail(int customerId) {
+        String sql = "SELECT email FROM customer WHERE id = ?";
+        try {
+            return jdbcTemplate.queryForObject(sql, String.class, customerId);
+        } catch (EmptyResultDataAccessException e) {
+            return null;
+        }
     }
 }
