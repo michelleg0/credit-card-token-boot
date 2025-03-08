@@ -6,7 +6,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
-@Repository
+
+//registering this as the class that talk to the db
+//this is dependency injection. Springboot design pattern. Injects as needed@Repository
 public class CustomerRepository {
 
     private final JdbcTemplate jdbcTemplate;

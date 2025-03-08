@@ -1,5 +1,7 @@
 package com.sdk.creditcardtokenboot.entity;
 
+//pojo since it's just getters and setters
+
 public class CreditCard {
     private int id;
     private String creditCardToken;

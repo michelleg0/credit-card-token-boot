@@ -7,10 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository  // ✅ This tells Spring to register this class as a Repository Bean
+@Repository  // This tells Spring to register this class as a Repository Bean
 public class CreditCardRepository {
     private final JdbcTemplate jdbcTemplate;
 
+
+    //create a select query to gather whatever columns needed to add to the csv file - ex id, token, then create new cc row mapper
     public CreditCardRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }

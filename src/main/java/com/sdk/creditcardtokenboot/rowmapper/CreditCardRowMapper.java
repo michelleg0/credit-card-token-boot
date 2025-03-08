@@ -7,6 +7,9 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+//this is the class that parses the result set object into credit card object data
+
 public class CreditCardRowMapper implements RowMapper<CreditCard> {
     @Override
     public CreditCard mapRow(ResultSet rs, int rowNum) throws SQLException {
