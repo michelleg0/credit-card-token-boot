@@ -26,10 +26,11 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")  // Instead of "/{id}"
     public Customer getCustomerById(@PathVariable int id) {
         return customerService.getCustomerById(id);
     }
+
 
     @PostMapping
     public void addCustomer(@RequestBody Customer customer) {

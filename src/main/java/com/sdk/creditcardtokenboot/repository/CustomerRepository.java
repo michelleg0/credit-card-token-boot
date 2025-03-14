@@ -10,6 +10,7 @@ import java.util.List;
 
 //registering this as the class that talk to the db
 //this is dependency injection. Springboot design pattern. Injects as needed@Repository
+@Repository
 public class CustomerRepository {
 
     private final JdbcTemplate jdbcTemplate;

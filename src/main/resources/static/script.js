@@ -1,5 +1,5 @@
 document.getElementById("exportBtn").addEventListener("click", function() {
-    fetch("/customers/export")
+    fetch("/export/customers")
         .then(response => response.json())
         .then(data => {
             console.log("Exported Data:", data);
