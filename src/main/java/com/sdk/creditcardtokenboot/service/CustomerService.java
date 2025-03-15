@@ -4,6 +4,7 @@ import com.sdk.creditcardtokenboot.entity.Customer;
 import com.sdk.creditcardtokenboot.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CustomerService {
@@ -31,5 +32,9 @@ public class CustomerService {
 
     public void deleteCustomer(int id) {
         customerRepository.delete(id);
+    }
+
+    public List<Map<String, Object>> getCustomersForExport() {
+        return customerRepository.findCustomersForExport();
     }
 }

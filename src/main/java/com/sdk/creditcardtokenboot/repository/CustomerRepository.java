@@ -6,10 +6,8 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
+import java.util.Map;
 
-
-//registering this as the class that talk to the db
-//this is dependency injection. Springboot design pattern. Injects as needed@Repository
 @Repository
 public class CustomerRepository {
 
@@ -58,4 +56,17 @@ public class CustomerRepository {
             return null;
         }
     }
+
+
+    public List<Map<String, Object>> findCustomersForExport() {
+        String sql = """
+        SELECT c.id, c.first_name, c.last_name, 
+               GROUP_CONCAT(DISTINCT cc.credit_card_token ORDER BY cc.id SEPARATOR ', ') AS credit_card_tokens
+        FROM customer c
+        LEFT JOIN credit_card cc ON c.id = cc.customer_id
+        GROUP BY c.id, c.first_name, c.last_name
+    """;
+        return jdbcTemplate.queryForList(sql);
+    }
+
 }

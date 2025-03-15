@@ -3,15 +3,11 @@ package com.sdk.creditcardtokenboot.controller;
 import com.sdk.creditcardtokenboot.entity.Customer;
 import com.sdk.creditcardtokenboot.service.CustomerService;
 import java.util.List;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import java.util.Map;
+import org.springframework.web.bind.annotation.*;
 
+
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 @RequestMapping("/customers")
 public class CustomerController {
@@ -26,11 +22,10 @@ public class CustomerController {
         return customerService.getAllCustomers();
     }
 
-    @GetMapping("/id/{id}")  // Instead of "/{id}"
+    @GetMapping("/{id}")
     public Customer getCustomerById(@PathVariable int id) {
         return customerService.getCustomerById(id);
     }
-
 
     @PostMapping
     public void addCustomer(@RequestBody Customer customer) {
@@ -46,5 +41,11 @@ public class CustomerController {
     @DeleteMapping("/{id}")
     public void deleteCustomer(@PathVariable int id) {
         customerService.deleteCustomer(id);
+    }
+
+
+    @GetMapping("/export")
+    public List<Map<String, Object>> exportCustomers() {
+        return customerService.getCustomersForExport();
     }
 }
