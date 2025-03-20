@@ -5,9 +5,13 @@ document.getElementById("customerForm").addEventListener("submit", function(even
 });
 
 // Export data - will need to connect to an endpoint
-document.getElementById("exportBtn").addEventListener("click", function() {
-    window.location.href = "http://localhost:8080/api/customers/export";
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("exportBtn").addEventListener("click", function () {
+        window.location.href = "http://localhost:8080/customers/export"; // Correct Spring Boot URL
+    });
 });
+
+
 
 // Import CSV - will need to connect to an endpoint
 document.getElementById("importBtn").addEventListener("click", function() {
